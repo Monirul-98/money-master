@@ -1,0 +1,21 @@
+.title {
+  color: #138d75;
+}
+.form {
+  background-color: rgba(112, 128, 144, 0.226);
+}
+.input-field {
+  background-color: rgba(128, 128, 128, 0.253);
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  padding: 8px;
+}
+.save-input {
+  width: 15%;
+}
+.input-label {
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: 10px;
+}
