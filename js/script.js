@@ -32,7 +32,6 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
     //Error handling for negative numbers
     alert("Invalid! Negative numbers not acceptable. ❌");
   }
-
   //   Clearing the input fields
   foodInput.value = "";
   rentInput.value = "";
@@ -43,24 +42,26 @@ document.getElementById("save-btn").addEventListener("click", function () {
   //Getting the saving input
   const save = document.getElementById("save");
   const saveValue = parseFloat(save.value);
+  if (saveValue > 0) {
+    //Calculating percantage
+    const percentage = parseFloat(saveValue / 100);
+    const savingPercent = totalIncome() * percentage;
 
-  //Calculating percantage
-  const percentage = parseFloat(saveValue / 100);
-  const savingPercent = totalIncome() * percentage;
+    const balance = document.getElementById("total-balance");
 
-  //Getting the balance
-  const balance = document.getElementById("total-balance");
-
-  // Error handling for if saving amount is greater the total balance
-  if (savingPercent > balance.innerText) {
-    alert("Sorry! You don't have enough money to save.");
+    // Error handling for if saving amount is greater the total balance
+    if (savingPercent > balance.innerText) {
+      alert("Sorry! You don't have enough money to save.");
+    } else {
+      //Getting the total saving input and passing the saving value
+      const totalSaving = document.getElementById("total-save");
+      totalSaving.innerText = savingPercent;
+      //Calculating remaining balance
+      document.getElementById("remaining").innerText =
+        parseInt(balance.innerText) - parseFloat(savingPercent);
+    }
   } else {
-    //Getting the total saving input and passing the saving value
-    const totalSaving = document.getElementById("total-save");
-    totalSaving.innerText = savingPercent;
-    //Calculating remaining balance
-    document.getElementById("remaining").innerText =
-      parseInt(balance.innerText) - parseFloat(savingPercent);
+    alert("Invalid! Negative numbers not acceptable. ❌");
   }
 
   save.value = "";
