@@ -1,7 +1,9 @@
-document.getElementById("calculate-btn").addEventListener("click", function () {
+function totalIncome() {
   const totalIncome = document.getElementById("income");
   const incomeValue = parseInt(totalIncome.value);
-
+  return incomeValue;
+}
+document.getElementById("calculate-btn").addEventListener("click", function () {
   //Getting access to all the input values
   const foodInput = document.getElementById("food");
   const foodInputValue = parseInt(foodInput.value);
@@ -10,20 +12,25 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const clothesInput = document.getElementById("clothes");
   const clothesInputValue = parseInt(clothesInput.value);
 
-  //Calculating total Expanse
-  const expanse = document.getElementById("total-expense");
-  const totalExpanse = parseInt(
-    foodInputValue + rentInputValue + clothesInputValue
-  );
+  //Error handling for negative numbers
+  if (foodInputValue > 0 && rentInputValue > 0 && clothesInputValue > 0) {
+    //Calculating total Expanse
+    const expanse = document.getElementById("total-expense");
+    const totalExpanse = parseInt(
+      foodInputValue + rentInputValue + clothesInputValue
+    );
 
-  //Error Handing for if someone spend more then their income
-  if (totalExpanse > incomeValue) {
-    alert("Sorry,You can't spend more than you have!");
+    //Error Handing for if someone spend more then their income
+    if (totalExpanse > totalIncome()) {
+      alert("Sorry,You can't spend more than you have!");
+    } else {
+      expanse.innerText = totalExpanse;
+      const balance = document.getElementById("total-balance");
+      const totalBalance = parseInt(totalIncome() - totalExpanse);
+      balance.innerText = totalBalance;
+    }
   } else {
-    expanse.innerText = totalExpanse;
-    const balance = document.getElementById("total-balance");
-    const totalBalance = parseInt(incomeValue - totalExpanse);
-    balance.innerText = totalBalance;
+    alert("Invalid! Negative numbers not acceptable. ❌");
   }
 
   //   Clearing the input fields
@@ -38,17 +45,12 @@ document.getElementById("save-btn").addEventListener("click", function () {
   const save = document.getElementById("save");
   const saveValue = parseFloat(save.value);
 
-  //getting the income inout
-  const totalIncome = document.getElementById("income");
-  const incomeValue = parseInt(totalIncome.value);
-
   //Calculating percantage
   const percentage = parseFloat(saveValue / 100);
-  const savingPercent = incomeValue * percentage;
+  const savingPercent = totalIncome() * percentage;
 
   //Getting the balance
   const balance = document.getElementById("total-balance");
-  console.log(balance.innerText);
 
   // Error handling for if saving amount is greater the total balance
   if (savingPercent > balance.innerText) {
