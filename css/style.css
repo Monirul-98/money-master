@@ -1,9 +1,11 @@
 .title {
   color: #138d75;
 }
+/* Giving background colour to the form  */
 .form {
   background-color: rgba(112, 128, 144, 0.226);
 }
+/* Styling all the input field  */
 .input-field {
   background-color: rgba(128, 128, 128, 0.253);
   border: none;
@@ -11,9 +13,11 @@
   width: 50%;
   padding: 8px;
 }
+/* Styling the save input field  */
 .save-input {
   width: 15%;
 }
+/* Styling all the input label  */
 .input-label {
   font-size: 17px;
   font-weight: 500;
