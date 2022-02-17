@@ -12,7 +12,7 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const clothesInput = document.getElementById("clothes");
   const clothesInputValue = parseInt(clothesInput.value);
 
-  if (foodInputValue > 0 && rentInputValue > 0 && clothesInputValue > 0) {
+  if (foodInputValue >= 0 && rentInputValue >= 0 && clothesInputValue >= 0) {
     //Calculating total Expanse
     const expanse = document.getElementById("total-expense");
     const totalExpanse = parseInt(
