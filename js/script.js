@@ -12,7 +12,6 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
   const clothesInput = document.getElementById("clothes");
   const clothesInputValue = parseInt(clothesInput.value);
 
-  //Error handling for negative numbers
   if (foodInputValue > 0 && rentInputValue > 0 && clothesInputValue > 0) {
     //Calculating total Expanse
     const expanse = document.getElementById("total-expense");
@@ -30,11 +29,11 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
       balance.innerText = totalBalance;
     }
   } else {
+    //Error handling for negative numbers
     alert("Invalid! Negative numbers not acceptable. ❌");
   }
 
   //   Clearing the input fields
-
   foodInput.value = "";
   rentInput.value = "";
   clothesInput.value = "";
